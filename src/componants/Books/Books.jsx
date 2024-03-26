@@ -16,7 +16,7 @@ const Books = () => {
     return (
         <div>
             <div className="mt-20 mb-10">
-                <h2 className="text-4xl text-center font-bold">Books : {books.length}</h2>
+                <h2 className="text-4xl text-center font-bold">Books</h2>
             </div>
             <div className="grid grid-cols-3 gap-10">
                 {
