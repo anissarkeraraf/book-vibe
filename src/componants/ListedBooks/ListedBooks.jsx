@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { getStoredBook } from '../Utility/LocalStorage';
 import { CiLocationOn } from "react-icons/ci";
 import { LuUsers2 } from "react-icons/lu";
@@ -63,7 +63,9 @@ const ListedBooks = () => {
                                             <button className='rounded-full text-[#ffc774] pt-0 pb-0 pl-2 pr-2 bg-[#fff3e0]'> Rating :{book.rating}</button>
                                         </div>
                                         <div className='lg:ml-3 mt-2'>
-                                            <button className='pt-0 pb-0 pl-2 pr-2 bg-[#23be0a] text-white rounded-full'>View Details</button>
+                                            <Link to={`/book/${book.id}`}>
+                                                <button className='pt-0 pb-0 pl-2 pr-2 bg-[#23be0a] text-white rounded-full'>View Details</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -110,7 +112,9 @@ const ListedBooks = () => {
                                             <button className='rounded-full text-[#ffc774] pt-0 pb-0 pl-2 pr-2 bg-[#fff3e0]'> Rating :{book.rating}</button>
                                         </div>
                                         <div className='lg:ml-3 lg:mt-0 mt-2'>
-                                            <button className='pt-0 pb-0 pl-2 pr-2 bg-[#23be0a] text-white rounded-full'>View Details</button>
+                                            <Link to={`/book/${book.id}`}>
+                                                <button className='pt-0 pb-0 pl-2 pr-2 bg-[#23be0a] text-white rounded-full'>View Details</button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
