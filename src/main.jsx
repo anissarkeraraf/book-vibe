@@ -11,12 +11,18 @@ import ListedBooks from './componants/ListedBooks/ListedBooks.jsx';
 import PagesToRead from './componants/PagesToRead/PagesToRead.jsx';
 import Home from './componants/Home/Home.jsx';
 import BookDetails from './componants/BookDetails/BookDetails.jsx';
+import NotFound from './componants/NotFound/NotFound.jsx';
 // import NotFound from './componants/NotFound/NotFound.jsx';
 
 const router = createBrowserRouter([
   {
+    path: '*',
+    element:<NotFound></NotFound>
+  },
+  {
     path: "/",
     element: <Root></Root>,
+  
     children: [
       {
         path: '/',
@@ -39,7 +45,9 @@ const router = createBrowserRouter([
         loader: () => fetch('/books.json')
       },
     ]
+    
   },
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

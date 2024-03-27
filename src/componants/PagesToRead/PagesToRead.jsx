@@ -16,16 +16,18 @@ const PagesToRead = () => {
     }, [books]);
 
     return (
-        <div className='mt-36'>
-            
-            <BarChart width={1200} height={400} data={items}>
-                <CartesianGrid />
-                <XAxis dataKey="bookName" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                <Bar dataKey="totalPages" fill="#8884d8" />
-            </BarChart>
+        <div className=' bg-[#F8F8F8] lg:w-[1100px] lg:h-[550px] mx-auto'>
+
+            <div className='mx-auto ml-8 pt-10'>
+                <BarChart width={1000} height={500} data={items}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="bookName" />
+                    <YAxis />
+                    <Tooltip />
+                    <Legend />
+                    <Bar dataKey="totalPages" fill="#8884d8" />
+                </BarChart>
+            </div>
         </div>
     );
 };
