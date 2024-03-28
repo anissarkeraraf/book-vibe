@@ -4,7 +4,7 @@ const About = () => {
     return (
         <div>
             <h2 className='text-5xl text-center mt-10 mb-5 font-bold'>About Book Vibe</h2>
-            <p>
+            <p className='pl-8 pr-4'>
                 It encompasses various elements, including the book's genre, writing style, themes, characters, setting, and tone. Here's a breakdown of some aspects that contribute to a book's vibe: <br />
 
                 <span className='font-bold'>Genre:</span> Different genres evoke different vibes. For example, a mystery novel might have a suspenseful and intriguing vibe, while a romance novel might have a more romantic and emotional vibe. <br />
