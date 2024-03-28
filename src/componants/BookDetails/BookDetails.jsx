@@ -3,6 +3,7 @@ import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { saveBook } from "../Utility/LocalStorage";
+import { saveWishlist } from "../Utility/WishListLocalStorage";
 
 const BookDetails = () => {
     const books = useLoaderData();
@@ -16,7 +17,7 @@ const BookDetails = () => {
        saveBook(idInt);
         if (!isReadClicked) {
             setIsReadClicked(true);
-            toast.success(`Added "${book.bookName}" to your reading list!`);
+            toast.success(`Added to your reading list!`);
             setReadToastShown(true);
         }else{
             toast.warning('You have alreadey read this book');
@@ -24,7 +25,7 @@ const BookDetails = () => {
     };
 
     const handleWishlistClick = () => {
-       saveBook(idInt);
+       saveWishlist(idInt);
         if (!isWishlistClicked && !isReadClicked) {
             setIsWishlistClicked(true);
             toast.success(`Added "${book.bookName}" to your wishlist!`);

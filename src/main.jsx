@@ -12,6 +12,8 @@ import PagesToRead from './componants/PagesToRead/PagesToRead.jsx';
 import Home from './componants/Home/Home.jsx';
 import BookDetails from './componants/BookDetails/BookDetails.jsx';
 import NotFound from './componants/NotFound/NotFound.jsx';
+import About from './componants/About/About.jsx';
+import Contact from './componants/Contact/Contact.jsx';
 // import NotFound from './componants/NotFound/NotFound.jsx';
 
 const router = createBrowserRouter([
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
         element: <BookDetails></BookDetails>,
         loader: () => fetch('/books.json')
       },
+      {
+        path: '/about',
+        element: <About></About>
+      },
+      {
+        path: '/contact',
+        element: <Contact></Contact>
+      }
     ]
     
   },

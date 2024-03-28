@@ -16,7 +16,7 @@ const PagesToRead = () => {
     }, [books]);
 
     return (
-        <div className=' bg-[#F8F8F8] lg:w-[1100px] lg:h-[550px] mx-auto'>
+        <div className=' bg-[#F8F8F8] lg:w-[1100px] lg:h-[550px] mx-auto mb-10 mt-10'>
 
             <div className='mx-auto ml-8 pt-10'>
                 <BarChart width={1000} height={500} data={items}>

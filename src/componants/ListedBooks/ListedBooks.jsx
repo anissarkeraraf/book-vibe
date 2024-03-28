@@ -4,16 +4,28 @@ import { getStoredBook } from '../Utility/LocalStorage';
 import { CiLocationOn } from "react-icons/ci";
 import { LuUsers2 } from "react-icons/lu";
 import { MdOutlineContactPage } from "react-icons/md";
+import { getstoreWishList } from '../Utility/WishListLocalStorage';
 
 const ListedBooks = () => {
     const books = useLoaderData();
+
     const [items, setItems] = useState([]);
+    const [wishListItems, setwishListItems] = useState([]);
+
+   
 
     useEffect(() => {
         const storedBookIds = getStoredBook();
         if (books.length > 0) {
             const booksList = books.filter(book => storedBookIds.includes(book.id));
             setItems(booksList);
+        }
+    }, [books]);
+    useEffect(() => {
+        const storedBookWishListIds = getstoreWishList();
+        if (books.length > 0) {
+            const booksWishList = books.filter(book => storedBookWishListIds.includes(book.id));
+            setwishListItems(booksWishList);
         }
     }, [books]);
 
@@ -75,7 +87,7 @@ const ListedBooks = () => {
 
                     <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Wishlist Books" checked />
                     <div role="tabpanel" className="tab-content bg-base-100 border-base-300 border-b-0 border-l-0 border-r-0 rounded-box p-6">
-                        {items.map(book => (
+                        {wishListItems.map(book => (
                             <div key={book.id} className="card lg:card-side lg:h[300px] bg-base-100 border-2 shadow-xl mb-10">
                                 <div className='bg-[#F3F3F3] w-[290px] rounded-2xl lg:m-10 mt-8 m-auto'>
                                     <img className="w-[250px] h-[280px] p-5 rounded-2xl pt-10 pl-14" src={book.image} alt={book.bookName} />
