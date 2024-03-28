@@ -5,14 +5,16 @@ import { CiLocationOn } from "react-icons/ci";
 import { LuUsers2 } from "react-icons/lu";
 import { MdOutlineContactPage } from "react-icons/md";
 import { getstoreWishList } from '../Utility/WishListLocalStorage';
+import { IoIosArrowDown } from "react-icons/io";
 
 const ListedBooks = () => {
     const books = useLoaderData();
 
     const [items, setItems] = useState([]);
+    const [sortBy, setSortBy] = useState('');
     const [wishListItems, setwishListItems] = useState([]);
 
-   
+
 
     useEffect(() => {
         const storedBookIds = getStoredBook();
@@ -29,11 +31,41 @@ const ListedBooks = () => {
         }
     }, [books]);
 
+    const handleSortByChange = (e) => {
+        const field = e.target.value;
+        setSortBy(field);
+        // Sort books based on the selected field
+        const sortedList = [...items].sort((a, b) => {
+            if (field === 'rating') {
+                return b.rating - a.rating;
+            } else if (field === 'totalPages') {
+                return b.totalPages - a.totalPages;
+            } else if (field === 'yearOfPublishing') {
+                return b.yearOfPublishing - a.yearOfPublishing;
+            }
+            return 0;
+        });
+        setItems(sortedList);
+    };
+
     return (
         <div>
-            <div className='bg-[#F3F3F3] h-[80px] w-full mt-10'>
-                <h2 className='text-2xl font-bold text-center pt-5'>Books</h2>
+            <div className="bg-[#F3F3F3] h-[80px] w-full mt-10">
+                <h2 className="text-2xl font-bold text-center pt-5">Books</h2>
             </div>
+            <div className="mt-20">
+                <div className="flex justify-center">
+                    <select id="sort" className="p-2 text-white bg-[#23be0a]" value={sortBy} onChange={handleSortByChange}>
+                        <option className='bg-white text-black' value="">Sort By <IoIosArrowDown className='pr-2'></IoIosArrowDown></option>
+                        <option className='bg-white text-black' value="rating">Rating</option>
+                        <option className='bg-white text-black' value="totalPages">Number of pages</option>
+                        <option className='bg-white text-black' value="yearOfPublishing">Published year</option>
+                        {/* Add more options as needed */}
+                    </select>
+                </div>
+            </div>
+
+
             <div className='mt-20'>
                 <div role="tablist" className="tabs tabs-lifted">
                     <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Read Books" />
@@ -44,7 +76,7 @@ const ListedBooks = () => {
                                     <img className="w-[250px] h-[280px] p-5 rounded-2xl pt-10 pl-14" src={book.image} alt={book.bookName} />
                                 </div>
 
-                                <div className='m-10'>
+                                <div className='lg:m-10'>
                                     <h2 className="card-title text-2xl mb-5">{book.bookName}</h2>
                                     <p className='mb-3 font-bold opacity-80'>By: {book.author}</p>
 
